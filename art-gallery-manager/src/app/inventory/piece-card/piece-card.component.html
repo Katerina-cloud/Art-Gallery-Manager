@@ -1,0 +1,25 @@
+<div class="piece-card">
+  <a [routerLink]="['/inventory', piece.id]" class="piece-card__a">
+    <img class="piece-card__img" [src]='"../../../assets/pieces/" + piece.id + ".png"' alt="piece image">
+  </a>
+  <div class="piece-card__name" [appBorderStyle]="piece.status">{{piece.title}}</div>
+  <div class="piece-card__artist">
+    <p>{{piece.artist}}</p>
+  </div>
+  <div class="piece-card__status" [appStatusStyle]="piece.status">
+    <p>{{piece.status}}</p>
+  </div>
+  <div class="piece-card__medium">
+    <p>{{piece.medium}}</p>
+  </div>
+  <div class="piece-card__price">
+    <p>{{piece.retailPrice}}$</p>
+  </div>
+  <a [routerLink]="['/inventory', piece.id, 'transaction-form']">
+    <button class="btn button-block col-lg-2 col-md-2 mb-3" [disabled]="!isAvailable(piece)">Transaction
+    </button>
+  </a>
+  <a [routerLink]="['/inventory', piece.id, 'edit']">
+    <button class="btn button-block col-lg-2 col-md-2">Edit</button>
+  </a>
+</div>

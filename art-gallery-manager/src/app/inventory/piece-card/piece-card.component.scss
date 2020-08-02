@@ -1,0 +1,65 @@
+@import "../../../variables.scss";
+
+.piece-card {
+  background-color: $color-grey-light-1;
+  max-width: 25rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-row-gap: 0.5rem;
+  grid-column-gap: 0.25rem;
+
+  &__a {
+    width: 100%;
+    grid-row: 1 / 2;
+    grid-column: 1 / -1;
+    z-index: 1;
+  }
+
+  &__img {
+    width: inherit;
+    max-height: 270px;
+    min-height: 270px;
+    object-position: top;
+    object-fit: cover;
+  }
+
+  &__name {
+    grid-row: 1 / 2;
+    grid-column: 1 / -1;
+    justify-self: center;
+    align-self: end;
+    z-index: 3;
+
+    width: 80%;
+    font-family: $font-display;
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 0.8rem;
+    background-color: $color-secondary;
+    color: #fff;
+    font-weight: 400;
+    transform: translateY(50%);
+  }
+
+  &__artist,
+  &__status {
+    margin-top: 2.5rem;
+  }
+
+  &__artist,
+  &__status,
+  &__medium,
+  &__price {
+    font-size: 1rem;
+    margin-left: 1.5rem;
+
+    display: flex;
+    align-items: center;
+
+    text-transform: capitalize;
+  }
+
+  &__btn {
+    grid-column: 1 / -1;
+  }
+}

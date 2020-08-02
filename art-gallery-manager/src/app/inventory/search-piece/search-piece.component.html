@@ -1,0 +1,4 @@
+<form class="form-group" #pieceSearchForm="ngForm" (ngSubmit)="onSubmit(pieceSearchForm)">
+  <input class=" form-control mb-3" type="text" name="title" [(ngModel)]="title" required placeholder="Which piece do you want to find?"/>
+  <input type="submit" value="Search" class="btn button-block btn-block" />
+</form>

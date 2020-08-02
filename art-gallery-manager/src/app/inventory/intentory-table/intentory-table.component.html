@@ -1,0 +1,38 @@
+<table class="table table-striped inventory-table">
+  <thead>
+    <tr>
+      <th scope="col">Thumbnail</th>
+      <th scope="col">Id</th>
+      <th scope="col">Artist</th>
+      <th scope="col">Title</th>
+      <th scope="col">Medium</th>
+      <th scope="col">Retail Price</th>
+      <th scope="col">Status</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let piece of pieces">
+      <th scope="row">
+        <img class="inventory-table__image" [src]='"../../../assets/pieces/" + piece.id + ".png"' alt="piece image">
+      </th>
+      <td>{{piece.id}}</td>
+      <td>{{piece.artist}}</td>
+      <td>{{piece.title}}</td>
+      <td>{{piece.medium}}</td>
+      <td>{{piece.retailPrice}}$</td>
+      <td [appStatusStyle]="piece.status">{{piece.status}}</td>
+      <td>
+        <a [routerLink]="['/inventory', piece.id, 'transaction-form']">
+          <button class="btn button-block col-lg-2 col-md-2 mb-3" [disabled]="!isAvailable(piece)">Transaction</button>
+        </a>
+      </td>
+      <td>
+        <a [routerLink]="['/inventory', piece.id, 'edit']">
+          <button class="btn button-block col-lg-2 col-md-2">Edit</button>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>

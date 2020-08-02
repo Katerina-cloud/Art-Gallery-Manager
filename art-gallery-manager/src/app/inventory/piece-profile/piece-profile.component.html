@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="piece-profile__wrapper" *ngIf="piece">
+    <div class="piece-profile" [ngStyle]="getBgImg(piece.id)">
+      <div class="row no-gutters">
+        <div class="col-md-5 piece-profile__info">
+          <div class="card-body">
+            <h5 class="card-title piece-profile__card-title">{{piece.title}}</h5>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="piece-profile__list-group-item list-group-item">Id: {{piece.id}}</li>
+            <li class="piece-profile__list-group-item list-group-item">Title: {{piece.title}}</li>
+            <li class="piece-profile__list-group-item list-group-item">Artist: {{piece.artist}}</li>
+            <li class="piece-profile__list-group-item list-group-item">Medium: {{piece.medium}}</li>
+            <li [appStatusStyle]="piece.status" class="piece-profile__list-group-item list-group-item">Status:
+              {{piece.status}}</li>
+            <li class="piece-profile__list-group-item list-group-item">Retail Price: {{piece.retailPrice}}</li>
+            <li class="piece-profile__list-group-item list-group-item">Bought From: {{piece.boughtFrom}}</li>
+            <li class="piece-profile__list-group-item list-group-item">Purchase Date:
+              {{formatCatchDate(piece.purchaseDate)}}</li>
+            <li *ngIf="showSellDate" class="piece-profile__list-group-item list-group-item">Sell Date:
+              {{formatCatchDate(piece.sellDate)}}</li>
+            <li *ngIf="showLoanStartDate" class="piece-profile__list-group-item list-group-item">Loan Start Date:
+              {{formatCatchDate(piece.loanStartDate)}}</li>
+            <li *ngIf="showLoanEndDate" class="piece-profile__list-group-item list-group-item">Loan End Date:
+              {{formatCatchDate(piece.loanEndDate)}}</li>
+            <li *ngIf="showCustomer" class="piece-profile__list-group-item list-group-item">Customer: {{piece.customer}}
+            </li>
+          </ul>
+          <div class="card-body">
+            <div class="card-button mt-3">
+              <a [routerLink]="['/inventory', piece.id, 'transaction-form']">
+                <button class="btn button-block col-lg-2 col-md-2" [disabled]="!isAvailable(piece)">Transaction
+                </button>
+              </a>
+            </div>
+            <a [routerLink]="['/inventory', piece.id, 'edit']">
+              <div class="card-button mt-3">
+                <button class="btn button-block col-lg-2 col-md-2">Edit</button>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

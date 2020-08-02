@@ -1,0 +1,94 @@
+<div class="container">
+  <div class="transaction-form__wrapper" *ngIf="piece">
+    <div class="transaction-form" [ngStyle]="getBgImg(piece.id)">
+      <ul class="list-group list-group-flush transaction-form__list-group-flush">
+        <li class="transaction-form__list-group-item list-group-item">Id: {{piece.id}}</li>
+        <li class="transaction-form__list-group-item list-group-item">Title: {{piece.title}}</li>
+        <li class="transaction-form__list-group-item list-group-item">Artist: {{piece.artist}}</li>
+        <li class="transaction-form__list-group-item list-group-item">Medium: {{piece.medium}}</li>
+        <li [appStatusStyle]="piece.status" class="transaction-form__list-group-item list-group-item">Status: {{piece.status}}</li>
+        <li class="transaction-form__list-group-item list-group-item">Bought From: {{piece.boughtFrom}}</li>
+      </ul>  
+      <form #infoEditForm="ngForm" (ngSubmit)="onSubmit(infoEditForm)" class="transaction-form__form">
+        <div class="transaction-form__group">
+          <label for="transaction-form__transaction" class="transaction-form__label">Transaction type:</label>
+          <select name="status" (change)="onSelectTransactionChange($event)" class="transaction-form__input transaction-form__transaction">
+            <option value="sell">Sell</option>
+            <option value="loan">Loan out</option>
+          </select>
+        </div>
+        <div class="transaction-form__group">
+          <label for="transaction-form__price" class="transaction-form__label">Retail Price:</label>
+          <input class="transaction-form__price transaction-form__input" name="retailPrice" [(ngModel)]="piece.retailPrice" placeholder="Retail Price" />
+        </div>
+        <div *ngIf="showSellDate" class="transaction-form__group">
+          <label for="transaction-form__sell-date" class="transaction-form__label">Sell Date:</label>
+          <input class="transaction-form__sell-date transaction-form__input" name="sellDate" [(ngModel)]="piece.sellDate" placeholder="Sell Date" />
+        </div>
+        <div *ngIf="showLoanStartDate" class="transaction-form__group">
+          <label for="transaction-form__loan-start-date" class="transaction-form__label">Loan Start Date:</label>
+          <input class="transaction-form__loan-start-date transaction-form__input" name="loanStartDate" [(ngModel)]="piece.loanStartDate" placeholder="Loan Start Date" />
+        </div>
+        <div *ngIf="showLoanEndDate" class="transaction-form__group">
+          <label for="transaction-form__loan-end-date" class="transaction-form__label">Loan End Date:</label>
+          <input class="transaction-form__loan-end-date transaction-form__input" name="loanEndDate" [(ngModel)]="piece.loanEndDate" placeholder="Loan End Date" />
+        </div>
+        <div class="transaction-form__group">
+          <label for="transaction-form__customer" class="transaction-form__label">Customer:</label>
+          <input class="transaction-form__customer transaction-form__input" name="customer" [(ngModel)]="piece.customer" placeholder="Customer" />
+        </div>
+        <div class="transaction-form__buttons mb-5 mt-5">
+          <div class="transaction-form__button">
+            <input type="button" class="btn button-block btn-block" value="Save" data-toggle="modal" data-target="#exampleModalPokeEditSave"/>
+          </div>
+          <div class="transaction-form__button">
+            <input type="button" class="btn button-block btn-block" value="Cancel" data-toggle="modal" data-target="#exampleModalPokeEditCancel"/>
+          </div>
+        </div>
+        
+        <!-- Modal Save-->
+        <div class="modal fade" #exampleModalPokeEditSave id="exampleModalPokeEditSave" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Changes saved.
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">OK</button>
+            </div>
+          </div>
+        </div>
+        </div>
+  
+        <!-- Modal Cancel-->
+        <div class="modal fade" #exampleModalPokeEditCancel id="exampleModalPokeEditCancel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Do you want to save changes?
+            </div>
+            <div class="modal-footer">
+              <button (click)="onCancel()" type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+              <button type="submit" class="btn btn-primary" data-dismiss="modal">Yes</button>
+            </div>
+          </div>
+        </div>
+        </div>
+      </form>
+    </div>  
+  </div>
+</div>

@@ -1,0 +1,23 @@
+@import "../../../variables.scss";
+
+.pieces-page__icon-view {
+  font-size: 48px;
+  display: inline-block;
+  color: $color-secondary;
+}
+
+.pieces-page__search {
+  margin: auto;
+}
+
+.pieces-page__buttons-view {
+  margin: 5vh 0;
+}
+
+.pieces-page__cards {
+  margin: 5rem 0;
+  grid-column: center-start / center-end;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  grid-gap: 5rem;
+}

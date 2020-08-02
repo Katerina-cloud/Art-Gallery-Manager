@@ -1,0 +1,21 @@
+<div [ngSwitch]="view" class="container mt-5 mb-5">
+  <div class="pieces-page__buttons-view">
+    <button class="btn btn-outline-secondary mr-1" [ngClass]="{active: galleryActive}" (click)="
+      toggleView('gallery')">Gallery</button>
+    <button class="btn btn-outline-secondary" [ngClass]="{active: listActive}" (click)="
+      toggleView('list')">List</button>
+  </div>
+  <div class="pieces-page__search">
+    <app-search-piece (filterPiece)="inventoryPageSearchOnClick($event)"></app-search-piece>
+  </div>
+  <ng-template ngSwitchCase="gallery">
+    <div class="pieces-page__cards">
+      <div *ngFor="let piece of (inventory$ | async)">
+        <app-piece-card [piece]="piece"></app-piece-card>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template ngSwitchCase="list">
+    <app-intentory-table [pieces]="inventory$ | async"></app-intentory-table>
+  </ng-template>
+</div>

@@ -1,0 +1,107 @@
+<div class="container">
+  <div class="edit-info__wrapper" *ngIf="piece">
+    <div class="edit-info" [ngStyle]="getBgImg(piece.id)">
+      <form #infoEditForm="ngForm" (ngSubmit)="onSubmit(infoEditForm)" class="edit-info__form">
+        <div class="edit-info__group">
+          <label for="edit-info__title" class="edit-info__label">Title:</label>
+          <input class="edit-info__title edit-info__input" name="title" [(ngModel)]="piece.title" placeholder="Title" />
+        </div>
+        <div class="edit-info__group">
+          <label for="edit-info__artist" class="edit-info__label">Artist:</label>
+          <input class="edit-info__artist edit-info__input" name="artist" [(ngModel)]="piece.artist" placeholder="Artist" />
+        </div>
+        <div class="edit-info__group">
+          <label for="edit-info__medium" class="edit-info__label">Medium:</label>
+          <input class="edit-info__medium edit-info__input" name="medium" [(ngModel)]="piece.medium" placeholder="Medium" />
+        </div>
+        <div class="edit-info__group">
+          <label for="edit-info__status" class="edit-info__label">Status:</label>
+          <select name="status" [(ngModel)]="piece.status" (change)="onSelectStatusChange($event)" class="edit-info__status edit-info__input">
+            <option value="available">Available</option>
+            <option value="sold">Sold</option>
+            <option value="loaned out">Loaned out</option>
+          </select>
+        </div>
+        <div class="edit-info__group">
+          <label for="edit-info__price" class="edit-info__label">Retail Price:</label>
+          <input class="edit-info__price edit-info__input" name="retailPrice" [(ngModel)]="piece.retailPrice" placeholder="Retail Price" />
+        </div>
+        <div class="edit-info__group">
+          <label for="edit-info__purchase-date" class="edit-info__label">Purchase Date:</label>
+          <input class="edit-info__purchase-date edit-info__input" name="purchaseDate" [(ngModel)]="piece.purchaseDate" placeholder="Purchase Date" />
+        </div>
+        <div class="edit-info__group">
+          <label for="edit-info__bought-from" class="edit-info__label">Bought From:</label>
+          <input class="edit-info__bought-from edit-info__input" name="boughtFrom" [(ngModel)]="piece.boughtFrom" placeholder="Bought From" />
+        </div>
+        <div *ngIf="showSellDate" class="edit-info__group">
+          <label for="edit-info__sell-date" class="edit-info__label">Sell Date:</label>
+          <input class="edit-info__sell-date edit-info__input" name="sellDate" [(ngModel)]="piece.sellDate" placeholder="Sell Date" />
+        </div>
+        <div *ngIf="showLoanStartDate" class="edit-info__group">
+          <label for="edit-info__loan-start-date" class="edit-info__label">Loan Start Date:</label>
+          <input class="edit-info__loan-start-date edit-info__input" name="loanStartDate" [(ngModel)]="piece.loanStartDate" placeholder="Loan Start Date" />
+        </div>
+        <div *ngIf="showLoanEndDate" class="edit-info__group">
+          <label for="edit-info__loan-end-date" class="edit-info__label">Loan End Date:</label>
+          <input class="edit-info__loan-end-date edit-info__input" name="loanEndDate" [(ngModel)]="piece.loanEndDate" placeholder="Loan End Date" />
+        </div>
+        <div *ngIf="showCustomer" class="edit-info__group">
+          <label for="edit-info__customer" class="edit-info__label">Customer:</label>
+          <input class="edit-info__customer edit-info__input" name="customer" [(ngModel)]="piece.customer" placeholder="Customer" />
+        </div>
+        <div class="edit-info__buttons mb-5 mt-5">
+          <div class="edit-info__button">
+            <input type="button" class="btn button-block btn-block" value="Save" data-toggle="modal" data-target="#exampleModalPokeEditSave"/>
+          </div>
+          <div class="edit-info__button">
+            <input type="button" class="btn button-block btn-block" value="Cancel" data-toggle="modal" data-target="#exampleModalPokeEditCancel"/>
+          </div>
+        </div>
+        
+        <!-- Modal Save-->
+        <div class="modal fade" #exampleModalPokeEditSave id="exampleModalPokeEditSave" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Changes saved.
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">OK</button>
+            </div>
+          </div>
+        </div>
+        </div>
+  
+        <!-- Modal Cancel-->
+        <div class="modal fade" #exampleModalPokeEditCancel id="exampleModalPokeEditCancel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Do you want to save changes?
+            </div>
+            <div class="modal-footer">
+              <button (click)="onCancel()" type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+              <button type="submit" class="btn btn-primary" data-dismiss="modal">Yes</button>
+            </div>
+          </div>
+        </div>
+        </div>
+      </form>
+    </div>  
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="container login__wrapper">
+  <div class="login">
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" class="login__form">
+      <div class="login__group">
+        <input type="text" class="login__input" name="retailPrice" placeholder="Username" />
+      </div>
+      <div class="login__group">
+        <input type="password" class="login__input" name="customer" placeholder="Password" />
+      </div>
+      <div class="login__button-wrapper mb-5 mt-5">
+        <div class="login__button">
+          <input type="submit" class="btn button-block btn-block" value="Log In"/>
+        </div>
+      </div>
+    </form>
+  </div>  
+</div>
+

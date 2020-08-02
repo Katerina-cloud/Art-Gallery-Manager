@@ -1,0 +1,95 @@
+@import "../../../variables.scss";
+
+.transaction-form__wrapper {
+  padding: 7rem 2rem;
+  background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+}
+
+.transaction-form {
+  background-repeat: no-repeat;
+  border-radius: 3px;
+  box-shadow: 0 1rem 2rem rgba($color-black, .2);
+  padding: 4rem 2rem;
+
+  &__list-group-flush{
+    width: 50%;
+    padding: 2rem;
+  }
+
+  .transaction-form__list-group-item {
+    border: 1px solid rgba($color-white, 0.7);
+    background: rgba($color-primary-light, 0.5);
+  }
+
+  .list-group-flush .transaction-form__list-group-item {
+    border-right-width: 0;
+    border-left-width: 0;
+    border-radius: 0;
+  }
+  
+  .list-group-flush .transaction-form__list-group-item:first-child {
+    border-top-width: 0;
+  }
+
+  &__form {
+    width: 50%;
+    padding: 2rem;
+
+    .transaction-form__group:not(:last-child) {
+      margin-bottom: 0.7rem;
+    }
+
+    .transaction-form__input {
+      font-size: 1rem;
+      font-family: inherit;
+      color: inherit;
+      padding: 0.5rem 1.5rem;
+      border-radius: 2px;
+      background-color: rgba($color-white, .7);
+      border: none;
+      border-bottom: 3px solid transparent;
+      width: 90%;
+      display: block;
+      transition: all .3s;
+
+      &:focus {
+        outline: none;
+        box-shadow: 0 1rem 2rem rgba($color-black, .1);
+        border-bottom: 3px solid $color-primary;
+      }
+
+      &:focus:invalid {
+        border-bottom: 3px solid $color-secondary;
+      }
+
+      &::-webkit-input-placeholder {
+        color: $color-grey-dark-2;
+      }
+    }
+
+    .transaction-form__label {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-left: 1rem;
+      margin-top: .7rem;
+      display: block;
+      transition: all .3s;
+    }
+
+    .transaction-form__input:placeholder-shown + &__label {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-4rem);
+    }
+
+    .transaction-form__buttons {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      
+      .transaction-form__button {
+        width: 48%;
+      }
+    }
+  }
+}

@@ -1,0 +1,106 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@import "./variables.scss";
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+// html {
+//   box-sizing: border-box;
+//   font-size: 62.5%; // 10px/16px = 62.5% -> 1rem = 10px
+
+//   @media only screen and (max-width: $bp-largest) {
+//     font-size: 50%;
+//   }
+// }
+
+.button-block {
+  background-color: $color-primary;
+  color: #fff;
+  border: none;
+  border-radius: 0;
+  font-family: $font-display;
+  font-size: 1rem;
+  text-transform: uppercase;
+  padding: 0.8rem 0.25rem;
+  cursor: pointer;
+  box-sizing: border-box;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 1rem 2rem rgba($color-primary, 0.2);
+    color: $color-white;
+    transition: all 0.2s;
+  }
+
+  &:active {
+    transform: translateY(3px);
+    box-shadow: 0 1rem 2rem rgba($color-primary, 0.2);
+    color: $color-white;
+    transition: all 0.2s;
+  }
+
+  @media (min-width: 768px) {
+    max-width: 100%;
+  }
+
+  &:disabled {
+    background: rgba($color-secondary, 0.5);
+
+    &:hover {
+      transform: none;
+    }
+
+    &:active {
+      transform: none;
+    }
+  }
+}
+
+.button-block-white {
+  height: 38px;
+  padding: 6px;
+  background: rgba($color-tertiary, 0.7);
+  border-radius: 5px;
+  color: $color-secondary;
+  border: 1px solid $color-secondary;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 1rem 2rem rgba($color-primary, 0.2);
+    color: $color-secondary;
+    transition: all 0.2s;
+  }
+
+  &:active {
+    transform: translateY(3px);
+    box-shadow: 0 1rem 2rem rgba($color-primary, 0.2);
+    color: $color-secondary;
+    transition: all 0.2s;
+  }
+
+  @media (min-width: 768px) {
+    max-width: 100%;
+  }
+
+  &:disabled {
+    background: rgba($color-secondary, 0.5);
+
+    &:hover {
+      transform: none;
+    }
+
+    &:active {
+      transform: none;
+    }
+  }
+}
+
